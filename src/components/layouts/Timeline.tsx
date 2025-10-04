@@ -1,8 +1,9 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Container from "../container";
 import TimelineCard from "@/components/ui/TimlineCard"
-import { title } from "process";
+
+import { motion } from "framer-motion";
 type mileStoneProps = {
   date?: string;
   title: string;
@@ -10,18 +11,48 @@ type mileStoneProps = {
   imageUrl?: string;
   cta?: { link: string; text: string };
 };
+const AnimatedTimelineCard = ({ children }: { children: React.ReactNode }) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: [0.1, 0.4, 0.8] }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => ref.current && observer.unobserve(ref.current);
+  }, []);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ scale: 0.8, opacity: 0, y: 60 }}
+      animate={
+        visible
+          ? { scale: 1, opacity: 1, y: 0 }
+          : { scale: 0.85, opacity: 0.5, y: -40 }
+      }
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="w-full"
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const milestones: mileStoneProps[] = [
   {
     date: "2019",
     title: "Asido Campus Network Launched",
     description: "Pioneering student-led mental health advocacy at the University of Ibadan.",
-    imageUrl: "/images/timeline10.png",
+    imageUrl: "/images/timeline10.svg",
   },
   {
     title: "Optimal Mental Health Debut",
     description: "Introducing a platform dedicated to promoting mental well-being and awareness in Ibadan, Lagos and Abuja.",
-    imageUrl: "/images/timeline4.png",
+    imageUrl: "/images/timeline4.svg",
   },
   {
     title: "Community Engagement Series Begins",
@@ -32,13 +63,13 @@ const milestones: mileStoneProps[] = [
     date: "2020",
     title: "Unashamed Campaign Launched",
     description: "Challenging stigma and empowering open conversations about mental health.",
-    imageUrl: "/images/timeline12.png",
+    imageUrl: "/images/timeline12.svg",
     cta: { text: "Learn More", link: "/unashamed-campaign" },
   },
   {
     title: "LIMI Africa Storytelling Series Kicks Off",
     description: "Sharing real stories to amplify voices and lived experiences in mental health.",
-    imageUrl: "/images/timeline3.png",
+    imageUrl: "/images/timeline3.svg",
     cta: { text: "Learn More", link: "/limi-africa-storytelling" },
   },
   {
@@ -55,7 +86,7 @@ const milestones: mileStoneProps[] = [
   {
     title: "First Suicide Prevention Walk",
     description: "Uniting the community to raise awareness and advocate for prevention.",
-    imageUrl: "/images/timeline7.png",
+    imageUrl: "/images/timeline7.svg",
   },
   {
     title: "Inaugural JAME Competition",
@@ -65,13 +96,13 @@ const milestones: mileStoneProps[] = [
   {
     title: "Donate-a-Book Drive Launched",
     description: "Promoting knowledge-sharing and mental health education through books.",
-    imageUrl: "/images/timeline11.png",
+    imageUrl: "/images/timeline11.svg",
   },
   {
     date: "2022",
     title: "Mindset Radio Show Goes Live",
     description: "Weekly conversations on mental health reaching a broader audience.",
-    imageUrl: "/images/timeline8.png",
+    imageUrl: "/images/timeline8.svg",
     cta: { text: "Listen Now", link: "/mindset-radio-show" },
   },
  {
@@ -82,14 +113,14 @@ const milestones: mileStoneProps[] = [
  {
    title: "Lagos State Recognition",
    description: "Honored for outstanding contributions to community mental health and advocacy.",
-   imageUrl: "/images/timeline9.png",
+   imageUrl: "/images/timeline9.jpeg",
     cta: { text: "Learn More", link: "/lagos-state-recognition" },
  },
  {
    date: "2024",
     title: "ACAMH LMICs Innovation Award",
    description: "Recognized internationally for innovation in mental health research and practice.",
-    imageUrl: "/images/timeline8.png",
+    imageUrl: "/images/timeline8.svg",
     cta: { text: "Learn More", link: "/acamh-award" },
  },
  {
@@ -167,18 +198,20 @@ const Timeline = () => {
 
           {/* Cards */}
           <div className="flex flex-col gap-20 ml-8 xl:ml-0">
-            {milestones.map((item, index) => (
-              <div
-                key={index}
-                className={`
-                  relative flex flex-col items-center
-                  xl:w-[50%] 
-                  ${index % 2 === 0 ? "xl:self-start xl:pr-16" : "xl:self-end xl:pl-16"}
-                `}
-              >
-                <TimelineCard {...item} />
-              </div>
-            ))}
+           {milestones.map((item, index) => (
+        <div
+          key={index}
+          className={`
+            relative flex flex-col items-center
+            xl:w-[50%]
+            ${index % 2 === 0 ? "xl:self-start xl:pr-16" : "xl:self-end xl:pl-16"}
+          `}
+        >
+          <AnimatedTimelineCard>
+            <TimelineCard {...item} />
+          </AnimatedTimelineCard>
+        </div>
+      ))}
           </div>
         </div>
       </Container>

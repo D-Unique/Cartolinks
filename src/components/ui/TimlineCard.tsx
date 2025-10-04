@@ -3,10 +3,10 @@ import Image from "next/image";
 
 const TimelineCard = ({ date, title, description, imageUrl, cta }: TimelineCardProps) => {
   return (
-    <div className="flex flex-col gap-3 p-6 bg-white rounded-lg shadow-md max-w-[20rem] w-full">
+    <div className="flex flex-col gap-3 p-6 bg-white rounded-lg shadow-md max-w-[20rem] w-full h-full xl:max-w-[80rem] ">
       {/* Year */}
       {date && (
-        <span className="text-blue-700 font-bold text-lg">
+        <span className="text-blue-800 font-bold text-[25px]">
           {date}
         </span>
       )}
@@ -20,7 +20,7 @@ const TimelineCard = ({ date, title, description, imageUrl, cta }: TimelineCardP
 
       {/* Description */}
       {description && (
-        <p className="text-gray-800 text-sm leading-relaxed">
+        <p className="mobile-body text-gray-700 text-[20px] font-bold leading-relaxed xl:body">
           {description}
         </p>
       )}
