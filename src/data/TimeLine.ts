@@ -83,7 +83,7 @@ const mileStonesData: mileStoneProps[] = [
  {
   title: "Most Outstanding Student Association",
    description: "Asido Campus Network honored for exceptional impact on Nigerian campuses.",
-    imageUrl: "/images/timeline13.png",
+    imageUrl: "/images/timeline13.svg",
    cta: { text: "Learn More", link: "/future-initiatives" }
   
  },
