@@ -12,3 +12,11 @@ export type PreFooterCardProps = {
     cta: { text: string; link: string };
 };
 
+export type mileStoneProps = {
+  date?: string;
+  title: string;
+  description: string;
+  imageUrl?: string;
+  cta?: { link: string; text: string };
+};
+
