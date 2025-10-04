@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import Container from "../container";
 import TimelineCard from "@/components/ui/TimlineCard"
 import { motion } from "framer-motion";
-import { mileStoneProps } from "@/types/LandingPage";
 import mileStonesData from "@/data/TimeLine";
 
 const AnimatedTimelineCard = ({ children }: { children: React.ReactNode }) => {
@@ -30,7 +29,7 @@ useEffect(() => {
           ? { scale: 1, opacity: 1, y: 0 }
           : { scale: 0.85, opacity: 0.5, y: -40 }
       }
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 1, ease: "easeOut" }}
       className="w-full"
     >
       {children}

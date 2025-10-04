@@ -25,11 +25,30 @@ const Prefooter = () => {
   return (
     <section className="bg-gray-50 py-12">
       <Container size="lg">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {prefooterCards.map((card, index) => (
-            <PreFooterCard key={index} {...card} />
-          ))}
+        <div className="flex flex-col gap-1 w-[22.5rem] h-[6rem] mb-10">
+        <h2 className="mobile-body text-accent text-[14px] font-semibold xl:body">Stay Informed</h2>
+        <p className="mobile-body text-secondary text-left text-lg font-bold w-full xl:body">
+        Through advocacy, education, and support, we’re building a stigma-free future for mental health in Nigeria
+        </p>
         </div>
+       <section className="w-full py-12 bg-gray-50">
+  <div
+    className="
+      flex overflow-x-auto scroll-smooth gap-6 px-4
+      md:grid md:grid-cols-3 md:overflow-x-visible md:px-0
+    "
+  >
+    {prefooterCards.map((card, index) => (
+      <div
+        key={index}
+        className="flex-shrink-0 w-[100%] sm:w-[60%] md:w-auto"
+      >
+        <PreFooterCard {...card} />
+      </div>
+    ))}
+  </div>
+</section>
+
       </Container>
     </section>
   );
