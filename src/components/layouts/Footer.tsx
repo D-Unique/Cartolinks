@@ -36,9 +36,9 @@ export default function Footer() {
   return (
     <footer className="bg-primary text-white pt-10 pb-6 px-6">
       {/* Top Section */}
-      <div className="max-w-[19.9rem ] h-[36rem] mx-auto flex flex-col items-center md:items-start">
+      <div className="max-w-[19.9rem ] h-[36rem] mx-auto flex flex-col items-center xl:items-center xl-mx-auto xl:flex-row xl:justify-between ">
         {/* Logo + tagline */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
+        <div className="flex flex-col items-center md:items-center text-center md:text-center md:justify-center ">
           <Image
             src="/images/81.svg"
             alt="Asido Foundation Logo"
@@ -51,7 +51,7 @@ export default function Footer() {
         </div>
 
         {/* Middle Section (Quick Links + Support side by side on mobile) */}
-        <div className="grid grid-cols-2 h-[20rem] md:grid-cols-4 gap-10 md:gap-16 mt-10 w-full text-center md:text-left xl:w-[52.6rem]">
+        <div className="grid grid-cols-2 h-[20rem] md:grid-cols-4 gap-10 md:gap-16 mt-10 w-full text-center md:text-left xl:w-[52.6rem] xl:h-[12.8rem]">
           {/* On desktop, these all show as 4 columns */}
           {/* On mobile, first two columns side-by-side, last (Contact Us) full width below */}
           {renderFooterLinkGroup(footerLinksQuick)}
@@ -61,6 +61,7 @@ export default function Footer() {
           </div>
         </div>
 
+      </div>
         {/* Social Icons */}
         <div className="flex gap-4 mt-8 justify-center md:justify-start">
           <a href="#" aria-label="Twitter">
@@ -76,7 +77,6 @@ export default function Footer() {
             <Instagram size={18} />
           </a>
         </div>
-      </div>
 
       {/* Divider */}
       <hr className="border-white/30 my-6 w-11/12 mx-auto" />

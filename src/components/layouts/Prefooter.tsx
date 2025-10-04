@@ -25,13 +25,13 @@ const Prefooter = () => {
   return (
     <section className="bg-gray-50 py-12">
       <Container size="lg">
-        <div className="flex flex-col gap-1 w-[22.5rem] h-[6rem] mb-10">
+        <div className="flex flex-col gap-1 w-[22.5rem] h-[6rem] mb-10 xl:w-[80rem] xl:[5rem] xl:mb-5">
         <h2 className="mobile-body text-accent text-[14px] font-semibold xl:body">Stay Informed</h2>
-        <p className="mobile-body text-secondary text-left text-lg font-bold w-full xl:body">
+        <p className="mobile-body text-secondary text-left text-lg font-bold w-full xl:body ">
         Through advocacy, education, and support, we’re building a stigma-free future for mental health in Nigeria
         </p>
         </div>
-       <section className="w-full py-12 bg-gray-50">
+       <section className="w-full  bg-gray-50">
   <div
     className="
       flex overflow-x-auto scroll-smooth gap-6 px-4
