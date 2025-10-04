@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+html {
+  font-size: 16px; /* 1rem = 16px */
+}
+
+@theme inline {
+  /* Fonts */
+  --font-sans: var(--font-plus-jakarta);
+  --font-mono: var(--font-geist-mono);
+
+  /* Layout */
+  --width-app: 90rem;
+
+  /* Line heights */
+  --leading-130: 130%;
+  --leading-140: 140%;
+
+  /* Colors */
+  --color-primary: #0044B5;
+  --color-secondary: #202124;
+  --color-accent: #00B191;
+  --color-orange: #F9AE0B;
+  --color-red: #FD372C;
+  --color-mywhite: #EBEDF1;
+
+  /* Typography scale */
+  --text-h1-size: 3rem;      /* 48px */
+  --text-h1-line: 140%;
+
+  --text-h2-size: 2rem;      /* 32px */
+  --text-h2-line: 140%;
+
+  --text-h3-size: 1.5rem;    /* 24px */
+  --text-h3-line: 130%;
+
+  --text-body-size: 1rem;    /* 16px */
+  --text-body-line: 130%;
+
+  --text-caption-size: 0.875rem; /* 14px */
+  --text-caption-line: 140%;
+
+  --text-footer-size: 0.875rem;  /* 14px */
+  --text-footer-line: 135%;
+}
+
+
+@layer components {
+  .h1 {
+    font-family: var(--font-sans, sans-serif);
+    font-weight: 700;
+    font-size: var(--text-h1-size);
+    line-height: var(--text-h1-line);
+    color: var(--color-primary);
+  }
+
+  .h2 {
+    font-family: var(--font-sans, sans-serif);
+    font-weight: 600;
+    font-size: var(--text-h2-size);
+    line-height: var(--text-h2-line);
+    color: var(--color-secondary);
+  }
+
+  .h3 {
+    font-family: var(--font-sans, sans-serif);
+    font-weight: 600;
+    font-size: var(--text-h3-size);
+    line-height: var(--text-h3-line);
+  }
+
+  .body {
+    font-family: var(--font-sans, sans-serif);
+    font-weight: 400;
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line);
+  
+  }
+  .mobile-body {
+    font-family: var(--font-sans, sans-serif);
+    font-weight: 700;
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line);
+  
+  }
+
+  .caption {
+    font-family: var(--font-sans, sans-serif);
+    font-weight: 400;
+    font-size: var(--text-caption-size);
+    line-height: var(--text-caption-line);
+    color: var(--color-secondary);
+  }
+
+  .footer-text {
+    font-family: var(--font-sans, sans-serif);
+    font-weight: 500;
+    font-size: var(--text-footer-size);
+    line-height: var(--text-footer-line);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+}
