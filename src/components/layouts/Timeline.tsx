@@ -1,24 +1,25 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Container from "../container";
-import TimelineCard from "@/components/ui/TimlineCard"
+import TimelineCard from "@/components/ui/TimlineCard";
 import { motion } from "framer-motion";
 import mileStonesData from "@/data/TimeLine";
 
 const AnimatedTimelineCard = ({ children }: { children: React.ReactNode }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
-useEffect(() => {
-  const observer = new IntersectionObserver(
-    ([entry]) => setVisible(entry.isIntersecting),
-    { threshold: [0.1, 0.4, 0.8] }
-  );
 
-  if (ref.current) observer.observe(ref.current);
-  return () => {
-    if (ref.current) observer.unobserve(ref.current);
-  };
-}, []);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: [0.1, 0.4, 0.8] }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, []);
 
   return (
     <motion.div
@@ -36,7 +37,6 @@ useEffect(() => {
     </motion.div>
   );
 };
-
 
 const Timeline = () => {
   useEffect(() => {
@@ -59,6 +59,8 @@ const Timeline = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const colors = ["text-accent", "text-accent", "text-red", "text-orange"];
+
   return (
     <section className="w-full flex flex-col bg-white">
       <Container size="app" className="py-12">
@@ -71,30 +73,52 @@ const Timeline = () => {
         {/* Timeline wrapper */}
         <div className="relative flex justify-center">
           {/* Base line */}
-          <div className="timeline-line relative w-1 bg-gray-300 h-full">
+          <div className="timeline-line absolute top-12 w-1 bg-gray-300 h-full">
+            <div className="absolute w-4 h-4 bg-primary rounded-full transform -translate-x-1.5" id="scrollDot"></div>
             <div
               id="activeLine"
-              className="absolute top-0 left-0 w-full bg-blue-500"
+              className="absolute top-0 left-0 w-full bg-primary"
               style={{ height: "0px" }}
             ></div>
+             {mileStonesData.map((item, index) => {
+    const showDot = index % 3 === 0; // show on first of every 3
+    return (
+      showDot && item.date && (
+        <div
+          key={index}
+          className="absolute w-4 h-4 bg-primary rounded-full transform -translate-x-1/2 left-1/2"
+          style={{ top: `${index * 488}px` }} // adjust spacing to match card distance
+        ></div>
+      )
+    );
+  })}
+
           </div>
 
           {/* Cards */}
           <div className="flex flex-col gap-20 ml-8 xl:ml-0">
-           {mileStonesData.map((item, index) => (
-        <div
-          key={index}
-          className={`
-            relative flex flex-col items-center
-            xl:w-[50%]
-            ${index % 2 === 0 ? "xl:self-start xl:pr-16" : "xl:self-end xl:pl-16"}
-          `}
-        >
-          <AnimatedTimelineCard>
-            <TimelineCard {...item} />
-          </AnimatedTimelineCard>
-        </div>
-      ))}
+            {mileStonesData.map((item, index) => {
+              const colorClass = colors[index % colors.length];
+              return (
+                <div
+                  key={index}
+                  className={`relative flex flex-col items-center xl:w-[50%] ${
+                    index % 2 === 0
+                      ? "xl:self-start xl:pr-16"
+                      : "xl:self-end xl:pl-16"
+                  }`}
+                >
+                  {/* Dot aligned with line */}
+                  {/* Dots at every dated milestone */}
+ 
+              
+                  {/* Card */}
+                  <AnimatedTimelineCard>
+                    <TimelineCard {...item} colorClass={colorClass} />
+                  </AnimatedTimelineCard>
+                </div>
+              );
+            })}
           </div>
         </div>
       </Container>
