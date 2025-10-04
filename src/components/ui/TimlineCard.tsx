@@ -15,7 +15,7 @@ const TimelineCard = ({
   colorClass = "text-gray-700", // fallback color
 }: ExtendedTimelineCardProps) => {
   return (
-    <div className="flex flex-col gap-3 p-6 rounded-lg shadow-md max-w-[20rem] w-full h-full xl:max-w-[80rem]">
+    <div className="flex flex-col gap-3 p-6 rounded-lg max-w-[20rem] w-full h-full xl:max-w-[80rem]">
       {/* Year */}
       {date && (
         <span className="text-blue-800 font-extrabold text-[39px]">
