@@ -20,3 +20,13 @@ export type mileStoneProps = {
   cta?: { link: string; text: string };
 };
 
+export type FooterLink = {
+  text: string;
+  link?: string;
+  icon?: React.ElementType;
+};
+
+export type FooterLinkGroup = {
+  heading: string;
+  links: FooterLink[];
+};

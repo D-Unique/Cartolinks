@@ -1,54 +1,16 @@
 import Image from "next/image";
 import {
-  MapPin,
-  Mail,
-  Phone,
   Twitter,
   Facebook,
   Linkedin,
   Instagram,
 } from "lucide-react";
-
-type FooterLink = {
-  text: string;
-  link?: string;
-  icon?: React.ElementType;
-};
-
-type FooterLinkGroup = {
-  heading: string;
-  links: FooterLink[];
-};
-
-const footerLinksQuick: FooterLinkGroup = {
-  heading: "Quick Links",
-  links: [
-    { text: "Programs", link: "/programs" },
-    { text: "Blog", link: "/blog" },
-    { text: "Thursday Tribune", link: "/thursday-tribune" },
-    { text: "IMCE Sessions", link: "/imce-session" },
-  ],
-};
-
-const footerLinksSupport: FooterLinkGroup = {
-  heading: "Support",
-  links: [
-    { text: "Donate", link: "/donate" },
-    { text: "Volunteer", link: "/volunteer" },
-    { text: "Book Campaign", link: "/book-campaign" },
-    { text: "Unashamed Pledge", link: "/unashamed-pledge" },
-  ],
-};
-
-const footerLinksContact: FooterLinkGroup = {
-  heading: "Contact Us",
-  links: [
-    { icon: MapPin, text: "No 4, Awosika Street, Old Bodija, Ibadan." },
-    { icon: Mail, text: "asidofoundation@gmail.com" },
-    { icon: Phone, text: "+234 818 077 7458" },
-    { icon: Phone, text: "+234 902 808 0416" },
-  ],
-};
+import { FooterLinkGroup } from "@/types/LandingPage";
+import {
+  footerLinksContact,
+  footerLinksQuick,
+  footerLinksSupport,
+} from "@/data/footerLinks";
 
 const renderFooterLinkGroup = (group: FooterLinkGroup) => (
   <div className="flex flex-col items-center  text-center mx-auto md:text-left">
@@ -89,7 +51,7 @@ export default function Footer() {
         </div>
 
         {/* Middle Section (Quick Links + Support side by side on mobile) */}
-        <div className="grid grid-cols-2 h-[20rem] md:grid-cols-4 gap-10 md:gap-16 mt-10 w-full text-center md:text-left">
+        <div className="grid grid-cols-2 h-[20rem] md:grid-cols-4 gap-10 md:gap-16 mt-10 w-full text-center md:text-left xl:w-[52.6rem]">
           {/* On desktop, these all show as 4 columns */}
           {/* On mobile, first two columns side-by-side, last (Contact Us) full width below */}
           {renderFooterLinkGroup(footerLinksQuick)}
