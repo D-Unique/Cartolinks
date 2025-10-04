@@ -96,7 +96,7 @@ const mileStonesData: mileStoneProps[] = [
  {
     title: "Advocacy Visit to Attorney General",
    description: "Campaigning for the decriminalization of attempted suicide in Nigeria.",
-   imageUrl: "/images/timeline2.svg",
+   imageUrl: "/images/timeline2.png",
  },
   {
     title: "Public Hearing Mobilization",

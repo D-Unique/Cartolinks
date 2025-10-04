@@ -71,7 +71,7 @@ const Timeline = () => {
         </div>
 
         {/* Timeline wrapper */}
-        <div className="relative flex justify-center">
+        <div className="relative flex md:justify-center">
           {/* Base line */}
           <div className="timeline-line absolute top-12 w-1 bg-gray-300 h-full">
             <div className="absolute w-4 h-4 bg-primary rounded-full transform -translate-x-1.5" id="scrollDot"></div>
